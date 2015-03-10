@@ -1,19 +1,20 @@
 import fresh_tomatoes
 
+# Class definitions
 class Movie:
-    trailer_youtube_url = ''
-    title = '' 
-    poster_image_url = ''
-    notables = []
+    """Stores information in a standard form to be parsed by fresh_tomatoes.py::open_movies_page for HTML generation"""
     def __init__(self, trailer_youtube_url, title, poster_image_url, notables):
         self.trailer_youtube_url = trailer_youtube_url
         self.title = title
         self.poster_image_url = poster_image_url
         self.notables = notables
 
-# Create expected list for fresh_tomatoes.py::open_movies_page        
+# Create expected list for fresh_tomatoes.py::open_movies_page
+# Stores Movie objects as defined above, to be parsed by the HTMl generator in fresh_tomatoes.py
 movie_list = [];
-
+# Movies included in list are defined here
+# As shown in the class definition, they are constructed with the URL of a YouTube trailer, the Title, the URL of a post image,
+# and an array of the names of famous actors or actresses in the movie
 movie_list.append(Movie('https://www.youtube.com/watch?v=B16Bo47KS2g',
                         'Guardians of the Galaxy',
                         'http://www.blackfilm.com/read/wp-content/uploads/2014/06/Guardians-of-the-Galaxy-poster-Star-Lord.jpg',
@@ -39,5 +40,6 @@ movie_list.append(Movie('https://www.youtube.com/watch?v=enJYNuWBJ9g',
                         'https://www.movieposter.com/posters/archive/main/19/MPW-9840',
                         ['Brad Pitt', 'Sean Bean', 'Orlando Bloom', 'Eric Bana']));
 
-# Pass Movie list to HTML-generating Python script
+# Pass the list of Movie objects to the following method within fresh_tomatoes.py, where it generates HTML and opens the
+# resultng page in the browser
 fresh_tomatoes.open_movies_page(movie_list);
